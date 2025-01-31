@@ -1,18 +1,19 @@
-import Main from './components/Main';
+import { Route, Routes } from 'react-router-dom';
 
+import Main from './components/Main';
+import Skill from './components/Skill';
 
 import './App.css'
 
 function App() {
   return (
     <>
-
-      <h1 className="text-3xl font-bold underline text-center text-blue-900">
-        <Main />
-      </h1>
-
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/skill" element={<Skill />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import Nav from "./Nav";
 import Hero from "./Hero";
 import Project from "./Project";
@@ -12,8 +14,10 @@ function Main() {
       <Project />
       <Testimonial />
       <Footer />
+
+      <Link to="/skill" className="text-3xl font-bold underline text-center text-blue-900"></Link>
     </div>
-  )
+  );
 }
 
-export default Main
+export default Main;
