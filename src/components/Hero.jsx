@@ -45,7 +45,7 @@ function Hero() {
         </button>
 
         <div className="flex mt-5 space-x-4 cursor-pointer">
-          <Link to='https://www.facebook.com/' target="_blank" rel="noopener noreferrer">
+          <Link to='https://www.facebook.com/stilian.mihnev' target="_blank" rel="noopener noreferrer">
             <BsFacebook size={40} className="border-4 hover:border-indigo-800 rounded-full" />
           </Link>
           <Link to='https://x.com/home/' target="_blank" rel="noopener noreferrer">
