@@ -133,9 +133,9 @@ const MySkills = () => {
             <div className="space-y-4">
               <h4 className="text-lg font-semibold">Links</h4>
               <nav className="flex flex-col space-y-2">
-                <Link href="/skills" className="hover:text-blue-400 transition-colors">Skills</Link>
-                <Link href="/projects" className="hover:text-blue-400 transition-colors">Projects</Link>
-                <Link href="/contact" className="hover:text-blue-400 transition-colors">Contact</Link>
+                <Link to="/skill" className="hover:text-blue-400 transition-colors">Skills</Link>
+                <Link to="/projects" className="hover:text-blue-400 transition-colors">Projects</Link>
+                <Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link>
               </nav>
             </div>
 
