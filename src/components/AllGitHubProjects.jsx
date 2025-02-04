@@ -42,10 +42,10 @@ const AllProjects = () => {
         <div className="flex justify-center mb-8">
           <input
             type="text"
-            placeholder="Search Projects..."
+            placeholder="Search Projects... "
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="px-4 py-2 rounded-md bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase"
+            className="px-4 py-2 rounded-md bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
