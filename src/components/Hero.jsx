@@ -38,7 +38,7 @@ function Hero() {
           )
         }
 
-        <button onClick={handleButton} className="bg-white text-indigo-500 px-10 py-2 my-3 rounded-full hover:bg-indigo-800 hover:text-white cursor-pointer">
+        <button onClick={handleButton} className="bg-white text-indigo-500 px-10 py-2 my-3 rounded-full hover:bg-indigo-800 hover:text-white cursor-pointer uppercase tracking-wide">
           {
             showMore ? "Show Less" : "Show more"
           }

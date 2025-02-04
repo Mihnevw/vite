@@ -8,19 +8,19 @@ const skills = [
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png', // Смени с истинска снимка за HTML5
     color: 'text-orange-400',
     proficiency: 90,
-    level: 'Професионалист',
+    level: 'PROFESSIONAL',
     description:
       'HTML5 is a basic language for creating web pages. With it, I create a semantic and well-structured content structure.',
     bgColor: 'bg-orange-900/30',
     borderColor: 'border-orange-500',
-    hoverBorderColor: 'hover:border-orange-400',
+    hoverBorderColor: 'hover:border-orange-700',
   },
   {
     name: 'JavaScript',
     image: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg',
     color: 'text-yellow-400',
     proficiency: 85,
-    level: 'Напреднал',
+    level: 'ADVANCED',
     description:
       'JavaScript is a powerful programming language that I use to add interactivity and dynamic behavior to web pages.',
     bgColor: 'bg-yellow-900/30',
@@ -32,7 +32,7 @@ const skills = [
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png', // Смени с истинска снимка за React
     color: 'text-cyan-400',
     proficiency: 80,
-    level: 'Комфортен',
+    level: 'ADVANCED',
     description:
       'React is a library for building user interfaces. I use it to create reusable components and manage state.',
     bgColor: 'bg-cyan-900/30',
@@ -44,7 +44,7 @@ const skills = [
     image: 'https://www.mindrops.com/images/nodejs-image.webp', // Смени с истинска снимка за Node.js
     color: 'text-green-400',
     proficiency: 75,
-    level: 'Средно ниво',
+    level: 'INTERMEDIATE LEVEL',
     description:
       'Node.js is a JavaScript runtime environment outside the browser. I use it to build server-side applications and RESTful APIs.',
     bgColor: 'bg-green-900/30',
