@@ -4,6 +4,7 @@ import Main from './components/Main';
 import Skill from './components/Skill';
 import AllGitHubProjects from './components/AllGitHubProjects';
 import Resume from './components/Resume';
+import Contact from './components/Contact';
 
 import './App.css';
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/skill" element={<Skill />} />
         <Route path="/project" element={<AllGitHubProjects />} />
         <Route path="/resume" element={<Resume />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );
