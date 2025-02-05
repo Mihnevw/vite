@@ -8,7 +8,7 @@ import Footer from "./Footer";
 
 function Main() {
   return (
-    <div className="bg-indigo-500 p-4">
+    <div className="bg-indigo-500 p-6">
       <Nav />
       <Hero />
       <Project />

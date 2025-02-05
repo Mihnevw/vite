@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Navigation from './Nav.jsx';
@@ -54,27 +55,35 @@ const skills = [
 ];
 
 const MySkills = () => {
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    setLoader(false);
+  }, []);
+
   return (
     <>
-      {/* Навигация с тъмен фон */}
       <div className="bg-gray-800 p-6">
         <Navigation />
       </div>
-      {/* Фонов градиент за страницата */}
       <div className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 py-16">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-100 uppercase tracking-wide">
             My skills
           </h2>
+          {loader ? (
+            <div className="flex justify-center items-center h-32">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid"></div>
+            </div>
+          ) : null}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {skills.map((skill, index) => (
               <div
                 key={index}
                 className={`group ${skill.bgColor} backdrop-blur-sm rounded-xl p-6 border-2 ${skill.borderColor} ${skill.hoverBorderColor} transition-all duration-300 hover:scale-105 hover:shadow-xl`}
               >
-                {/* Responsive оформление: вертикално на мобилни, хоризонтално на по-големи екрани */}
+                {/* оформление: вертикално на мобилни, хоризонтално на по-големи екрани */}
                 <div className="flex flex-col md:flex-row items-center">
-                  {/* Секция за изображението */}
                   <div className="w-full md:w-1/3 flex justify-center md:justify-start mb-4 md:mb-0">
                     <img
                       src={skill.image}
@@ -82,7 +91,6 @@ const MySkills = () => {
                       className={`rounded-lg ${skill.name === 'React' ? 'object-contain w-32 h-32' : 'object-cover w-32 h-32'}`}
                     />
                   </div>
-                  {/* Секция за текстовото съдържание */}
                   <div className="w-full md:w-2/3 md:pl-6">
                     <h3 className="text-2xl font-bold text-gray-100 mb-2">
                       {skill.name}
@@ -90,14 +98,13 @@ const MySkills = () => {
                     <p className="text-sm text-gray-300 mb-4">
                       {skill.description}
                     </p>
-                    {/* Лента за напредък */}
                     <div className="w-full bg-gray-500 rounded-full h-2 mt-2">
                       <div
                         className={`h-2 rounded-full transition-all duration-500 ${skill.proficiency >= 80
-                            ? 'bg-green-500'
-                            : skill.proficiency >= 50
-                              ? 'bg-yellow-500'
-                              : 'bg-red-500'
+                          ? 'bg-green-500'
+                          : skill.proficiency >= 50
+                            ? 'bg-yellow-500'
+                            : 'bg-red-500'
                           }`}
                         style={{ width: `${skill.proficiency}%` }}
                       ></div>
@@ -121,7 +128,6 @@ const MySkills = () => {
       <footer className="bg-gray-800 text-white py-12 ">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {/* Brand Section */}
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-gray-100">Mihnevw</h3>
               <p className="text-sm text-gray-400">
@@ -129,17 +135,16 @@ const MySkills = () => {
               </p>
             </div>
 
-            {/* Quick Links */}
             <div className="space-y-4">
               <h4 className="text-lg font-semibold">Links</h4>
               <nav className="flex flex-col space-y-2">
                 <Link to="/skill" className="hover:text-blue-400 transition-colors">Skills</Link>
                 <Link to="/projects" className="hover:text-blue-400 transition-colors">Projects</Link>
+                <Link to="/resume" className="hover:text-blue-400 transition-colors">CV</Link>
                 <Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link>
               </nav>
             </div>
 
-            {/* Contact Info */}
             <div className="space-y-4">
               <h4 className="text-lg font-semibold">Contact</h4>
               <div className="space-y-2 text-sm">
@@ -149,7 +154,6 @@ const MySkills = () => {
               </div>
             </div>
 
-            {/* Social Links */}
             <div className="space-y-4">
               <h4 className="text-lg font-semibold">Social networks</h4>
               <div className="flex space-x-4">
@@ -172,7 +176,6 @@ const MySkills = () => {
             </div>
           </div>
 
-          {/* Copyright */}
           <div className="border-t border-gray-700 mt-12 pt-8 text-center">
             <p className="text-sm text-gray-400">
               © {new Date().getFullYear()} Mihnevw

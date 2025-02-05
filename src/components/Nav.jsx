@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { CgNametag } from "react-icons/cg";
 import { AiOutlineClose } from "react-icons/ai";
 import { HiMenuAlt1 } from "react-icons/hi";
-import { Link } from "react-router-dom";
 
 function Nav() {
   const [toggle, setToggle] = useState(false)
@@ -18,10 +18,10 @@ function Nav() {
 
   return (
     <>
-      <div className="flex items-center justify-between p-10 lg:flex-row">
+      <div className="flex items-center justify-between p-8 lg:flex-row">
         <div>
-          <a href="/" className="text-white font-mono text-3xl 
-        tracking-wider flex items-center font-bold"><CgNametag /> Mihnev</a>
+          <Link to="/" className="text-white font-mono text-3xl 
+        tracking-wider flex items-center font-bold"><CgNametag /> Mihnev</Link>
         </div>
         <div className="space-x-4">
           <div className="ssm:hidden lg:block space-x-2">

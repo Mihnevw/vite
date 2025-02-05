@@ -92,7 +92,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full p-2 border border-gray-300 rounded-lg"
+                  className="w-full p-2 border border-gray-300 rounded-lg field-sizing-content"
                 />
               </div>
               <button
@@ -133,6 +133,7 @@ const Contact = () => {
               <nav className="flex flex-col space-y-2">
                 <Link to="/skill" className="hover:text-blue-400 transition-colors">Skills</Link>
                 <Link to="/projects" className="hover:text-blue-400 transition-colors">Projects</Link>
+                <Link to="/resume" className="hover:text-blue-400 transition-colors">CV</Link>
                 <Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link>
               </nav>
             </div>
