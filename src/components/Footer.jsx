@@ -19,6 +19,7 @@ function Footer() {
             <nav className="flex flex-col space-y-2">
               <Link to="/skill" className="hover:text-blue-400 transition-colors">Skills</Link>
               <Link to="/projects" className="hover:text-blue-400 transition-colors">Projects</Link>
+              <Link to="/resume" className="hover:text-blue-400 transition-colors">CV</Link>
               <Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link>
             </nav>
           </div>

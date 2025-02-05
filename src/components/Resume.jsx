@@ -14,7 +14,7 @@ const Resume = () => {
             My CV
           </h2>
           <p className="text-gray-300 text-lg text-center mb-6">
-            Download my CV to review it.
+            Click the button below to see my CV.
           </p>
           <div className="flex justify-center">
             <Link
@@ -43,6 +43,7 @@ const Resume = () => {
               <nav className="flex flex-col space-y-2">
                 <Link to="/skill" className="hover:text-blue-400 transition-colors">Skills</Link>
                 <Link to="/projects" className="hover:text-blue-400 transition-colors">Projects</Link>
+                <Link to="/resume" className="hover:text-blue-400 transition-colors">CV</Link>
                 <Link to="/contact" className="hover:text-blue-400 transition-colors">Contact</Link>
               </nav>
             </div>
