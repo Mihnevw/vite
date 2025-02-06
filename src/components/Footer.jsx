@@ -7,7 +7,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gray-100">Mihnevw</h3>
+            <h3 className="text-xl font-bold text-gray-100">Mihnev</h3>
             <p className="text-sm text-gray-400">
             Frontend developer with a passion for creating innovative solutions
             </p>
@@ -24,7 +24,7 @@ function Footer() {
             </nav>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Contact</h4>
             <div className="space-y-2 text-sm">

@@ -28,10 +28,30 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted", formData);
-    setSubmitted(true);
+
+    try {
+      const response = await fetch("http://localhost:5000/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+          phone: ""
+        });
+      } else {
+        console.error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
 
   return (
@@ -44,8 +64,10 @@ const Contact = () => {
           <FaAddressCard className="w-8 h-8 text-gray-800 mx-auto mb-4" />
           <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">Contact Us</h2>
           {submitted ? (
-            //Add a button to return to the home page
-            <p className="text-green-500 text-center">Thank you! Your message has been sent.</p>
+            <div className="text-center">
+              <p className="text-green-500">Thank you! Your message has been sent.</p>
+              <Link to="/" className="text-blue-500 hover:underline mt-4 inline-block">Go back to Home</Link>
+            </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex items-center gap-2">
@@ -120,9 +142,8 @@ const Contact = () => {
       <footer className="bg-gray-800 text-white py-12">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {/* Brand Section */}
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-gray-100">Mihnevw</h3>
+              <h3 className="text-xl font-bold text-gray-100">Mihnev</h3>
               <p className="text-sm text-gray-400">
                 Frontend developer with a passion for creating innovative solutions
               </p>

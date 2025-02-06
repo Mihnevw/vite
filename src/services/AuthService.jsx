@@ -84,24 +84,6 @@ export const useAuth = () => {
 
 }
 
-export const reservation = async (email, name, people, specialRequest, dateTime) => {
-    let response = await fetch(`${baseUrl}/reservations`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({ email, name, people, specialRequest, dateTime })
-    });
-    let jsonResult = await response.json();
-
-    if (response.ok) {
-        return jsonResult
-    } else {
-        throw jsonResult
-    }
-
-};
-
 export const updateProfile = async (token) => {
     let response = await fetch(`${baseUrl}/users/me`, {
         method: 'GET',
