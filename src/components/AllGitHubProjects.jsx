@@ -36,7 +36,7 @@ const AllProjects = () => {
       <div className="bg-gray-800 p-6">
         <Navigation />
       </div>
-      <div className="min-h-screen bg-gradient-to-b from-gray-800 to-gray-900 py-12 px-6">
+      <div className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 py-12 px-6">
         <h1 className="text-4xl font-extrabold text-center text-white uppercase tracking-wider mb-10">
           My GitHub Projects
         </h1>

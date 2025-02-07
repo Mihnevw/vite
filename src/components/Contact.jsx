@@ -59,7 +59,7 @@ const Contact = () => {
       <div className="bg-gray-800 p-6">
         <Navigation />
       </div>
-      <div className="min-h-screen bg-gray-800 flex items-center justify-center p-6">
+      <div className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center p-6">
         <div className="max-w-3xl w-full p-6 shadow-lg rounded-2xl bg-white">
           <FaAddressCard className="w-8 h-8 text-gray-800 mx-auto mb-4" />
           <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">Contact Us</h2>

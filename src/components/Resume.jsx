@@ -8,7 +8,7 @@ const Resume = () => {
       <div className="bg-gray-800 p-6">
         <Navigation />
       </div>
-      <div className="min-h-screen bg-gradient-to-b from-gray-800 to-gray-900 py-12 px-6">
+      <div className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 py-12 px-6">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
           <h2 className="text-4xl font-extrabold text-white text-center uppercase tracking-wider mb-6">
             My CV

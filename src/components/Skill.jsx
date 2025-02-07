@@ -38,11 +38,11 @@ const skills = [
       'React is a library for building user interfaces. I use it to create reusable components and manage state.',
     bgColor: 'bg-cyan-900/30',
     borderColor: 'border-cyan-500',
-    hoverBorderColor: 'hover:border-cyan-400',
+    hoverBorderColor: 'hover:border-cyan-300',
   },
   {
     name: 'Node.js',
-    image: 'https://www.mindrops.com/images/nodejs-image.webp', // Смени с истинска снимка за Node.js
+    image: 'https://www.mindrops.com/images/nodejs-image.webp',
     color: 'text-green-400',
     proficiency: 75,
     level: 'INTERMEDIATE LEVEL',
@@ -51,6 +51,31 @@ const skills = [
     bgColor: 'bg-green-900/30',
     borderColor: 'border-green-500',
     hoverBorderColor: 'hover:border-green-400',
+  },
+  {
+    name: 'TailwindCSS',
+    image: '/src/assets/tailwind.png',
+    color: 'text-sky-400',
+    proficiency: 55,
+    level: 'INTERMEDIATE LEVEL',
+    description:
+      'I use Tailwind CSS because it allows me to quickly build user interfaces with pre-defined utility classes. Instead of writing custom CSS.',
+    bgColor: 'bg-sky-900/30',
+    borderColor: 'border-sky-600',
+    //borderColor: 'bg-indigo-900/30',
+    hoverBorderColor: 'hover:border-sky-400',
+  },
+  {
+    name: 'CSS3',
+    image: 'https://delta-dev-software.fr/wp-content/uploads/2024/05/CSS-Logo.png',
+    color: 'text-blue-400',
+    proficiency: 80,
+    level: 'ADVANCED',
+    description:
+      'I use CSS3 to create modern and responsive designs with animations, gradients, and flexible layouts. It gives me more control with Flexbox, Grid, transitions, and custom fonts.',
+    bgColor: 'bg-blue-900/30',
+    borderColor: 'border-blue-500',
+    hoverBorderColor: 'hover:border-blue-600',
   },
 ];
 
@@ -88,7 +113,12 @@ const MySkills = () => {
                     <img
                       src={skill.image}
                       alt={skill.name}
-                      className={`rounded-lg ${skill.name === 'React' ? 'object-contain w-32 h-32' : 'object-cover w-32 h-32'}`}
+                      className={`rounded-lg ${skill.name === 'React'
+                        ? 'object-contain w-32 h-32'
+                        : skill.name === 'TailwindCSS'
+                          ? 'object-contain w-32 h-32'
+                          : 'object-cover w-32 h-32'
+                        }`}
                     />
                   </div>
                   <div className="w-full md:w-2/3 md:pl-6">
