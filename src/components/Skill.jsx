@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import {NotificationStack} from './Notification.jsx';
 import Navigation from './Nav.jsx';
 
 const skills = [
@@ -90,6 +91,9 @@ const MySkills = () => {
     <>
       <div className="bg-gray-800 p-6">
         <Navigation />
+      </div>
+      <div>
+        <NotificationStack />
       </div>
       <div className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 py-16">
         <div className="max-w-6xl mx-auto px-4">

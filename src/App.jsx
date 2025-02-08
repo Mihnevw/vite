@@ -6,7 +6,6 @@ import AllGitHubProjects from './components/AllGitHubProjects';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 
-import './App.css';
 
 function App() {
   return (
