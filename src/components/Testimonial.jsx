@@ -7,7 +7,7 @@ function Testimonial() {
   return (
     <div className="flex flex-wrap justify-center m-10">
       <div className='w-full text-center mb-6'>
-        <h1 className='text-3xl text-white'>Team:</h1>
+        <h1 className='text-3xl text-white font-bold uppercase tracking-wide'>Team:</h1>
       </div>
       
       {[{ img: B1, name: "Mike", role: "Manager" },

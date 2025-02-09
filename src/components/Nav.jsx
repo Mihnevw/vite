@@ -7,6 +7,12 @@ import { HiMenuAlt1 } from "react-icons/hi";
 function Nav() {
   const [toggle, setToggle] = useState(false);
 
+  if (toggle) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
   return (
     <>
       <div className="flex items-center justify-between p-6 lg:p-8 lg:flex-row">
