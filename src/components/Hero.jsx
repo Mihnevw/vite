@@ -9,18 +9,21 @@ function Hero() {
   const [loading, setLoading] = useState(true);
 
   const handleButton = () => {
-    setShowMore(!showMore); //Всеки път превключва от true на false и обратно
+    setShowMore(prev => !prev);
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
+
 
   return (
     <>
-    {loading}
+      {loading}
       <section className="flex justify-around items-center p-10 space-x-15 lg:flex-row ssm:flex-col ssm:space-y-10 text-white">
         <div className="lg:w-1/3 ssm:w-fit">
           <p className="text-4xl mb-5 text-salte-300 font-bold">I`m</p>
@@ -54,16 +57,16 @@ function Hero() {
           </button>
 
           <div className="flex mt-5 space-x-4 cursor-pointer">
-            <Link to='https://www.facebook.com/stilian.mihnev' target="_blank" rel="noopener noreferrer">
+            <Link to='https://www.facebook.com/stilian.mihnev' target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <BsFacebook size={40} className="border-4 hover:border-indigo-800 rounded-full" />
             </Link>
-            <Link to='https://x.com/home/' target="_blank" rel="noopener noreferrer">
+            <Link to='https://x.com/home/' target="_blank" rel="noopener noreferrer" aria-label="Twitter">
               <BsTwitter size={40} className="border-4 hover:border-indigo-800 rounded-full" />
             </Link>
-            <Link to='https://www.instagram.com/mihnevw/' target="_blank" rel="noopener noreferrer">
+            <Link to='https://www.instagram.com/mihnevw/' target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <BsInstagram size={40} className="border-4 hover:border-indigo-800 rounded-full" />
             </Link>
-            <Link to='https://github.com/Mihnevw/' target="_blank" rel="noopener noreferrer">
+            <Link to='https://github.com/Mihnevw/' target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <BsGithub size={40} className="border-4 hover:border-indigo-800 rounded-full" />
             </Link>
           </div>

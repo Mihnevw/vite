@@ -8,104 +8,51 @@ import ProjectImg4 from '../assets/app4.png';
 
 function Project() {
   return (
-    <div className='bg-indigo-800 m-20 max-w-full p-10'>
+    <div className='bg-indigo-800 m-5 md:m-20 max-w-full p-5 md:p-10'>
       <div className='grid justify-items-center'>
-        <h1 className='uppercase tracking-wide text-2xl font-bold text-white mt-10'>My Projects</h1>
+        <h1 className='uppercase tracking-wide text-2xl font-bold text-white mt-5 md:mt-10'>My Projects</h1>
       </div>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 p-5'>
+      <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-6 p-3 md:p-5'>
         {/* Project Card */}
-        <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:animate-pulse transition-transform'>
-          <div className='md:flex'>
-            <div className='p-8'>
-              <div className='uppercase tracking-wide text-sm text-black font-semibold'>
-                Music application
+        {[{
+          title: 'Music application',
+          description: 'Music app is a web application that allows users to search for albums, add new ones to their library, and remove existing ones.',
+          img: ProjectImg1,
+          link: 'https://github.com/Mihnevw/Music-App'
+        }, {
+          title: 'Weather application',
+          description: 'Weather app allows users to enter a city name and view the current temperature with real-time weather data.',
+          img: ProjectImg2,
+          link: 'https://github.com/Mihnevw/Weather-App'
+        }, {
+          title: 'Restaurant Application',
+          description: 'Restaurant is a web application displaying a menu with interactive features, built with Bootstrap and other libraries.',
+          img: ProjectImg3,
+          link: 'https://github.com/Mihnevw/restaurant'
+        }, {
+          title: 'Game Application',
+          description: 'Game Library allows users to add, delete, and browse games with a comment system for reviews.',
+          img: ProjectImg4,
+          link: 'https://github.com/Mihnevw/games-react-site'
+        }].map((project, index) => (
+          <div key={index} className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:animate-pulse transition-transform'>
+            <div className='md:flex flex-col sm:flex-row'>
+              <div className='p-5 flex-shrink-0'>
+                <img className='object-contain w-full sm:w-[110px] h-auto sm:h-[110px]' src={project.img} alt={project.title} />
               </div>
-              <p className='text-blue-400 hover:underline'>MA</p>
-              <p className='text-gray-700 text-base leading-normal'>
-                Music app is a web application that allows users to search for albums, add new ones to their library, and remove existing ones. With an easy-to-use interface, the app provides a personalized experience for music enthusiasts.
-              </p>
-            </div>
-            <div className='md:shrink-0 p-5'>
-              <img className='object-contain w-[110px] h-[110px]' src={ProjectImg1} alt="Hospital" />
-            </div>
-            <div className='flex justify-end mt-80'>
-              <Link to='https://github.com/Mihnevw/Music-App' target="_blank" rel="noopener noreferrer">
-                <BsGithub size={40} className="border-4 hover:border-indigo-800 rounded-full" />
-              </Link>
+              <div className='p-5 flex-grow'>
+                <div className='uppercase tracking-wide text-sm text-black font-semibold'>{project.title}</div>
+                <p className='text-gray-700 text-base leading-normal'>{project.description}</p>
+                <div className='flex justify-end mt-5'>
+                  <Link to={project.link} target='_blank' rel='noopener noreferrer'>
+                    <BsGithub size={40} className='border-4 hover:border-indigo-800 rounded-full' />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:animate-pulse transition-transform'>
-          <div className='md:flex'>
-            <div className='md:shrink-0 p-5'>
-              <img className='object-contain w-[110px] h-[110px]' src={ProjectImg2} alt="School" />
-            </div>
-            <div className='p-8'>
-              <div className='uppercase tracking-wide text-sm text-black font-semibold'>
-                Weather application
-              </div>
-              <p className='text-blue-400 hover:underline'>WA</p>
-              <p className='text-gray-700 text-base leading-normal'>
-                Weather app is a simple web application that allows users to enter a city name and view the current temperature in that city. With real-time weather data integration, it provides quick and accurate temperature information for any location.
-              </p>
-            </div>
-            <div className='flex justify-end mt-80'>
-              <Link to='https://github.com/Mihnevw/Weather-App' target="_blank" rel="noopener noreferrer">
-                <BsGithub size={40} className="border-4 hover:border-indigo-800 rounded-full" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <hr className='my-8 border-gray-300' />
-
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 p-5'>
-        <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:animate-pulse transition-transform'>
-          <div className='md:flex'>
-            <div className='p-8'>
-              <div className='uppercase tracking-wide text-sm text-black font-semibold'>
-                Restaurant Applicattion
-              </div>
-              <p className='text-blue-400 hover:underline'>RA</p>
-              <p className='text-gray-700 text-base leading-normal'>
-                Restaurant is a dynamic web application that displays a restaurant menu with interactive features. Built using Bootstrap and other libraries, the application offers a visually appealing and responsive design, allowing users to easily browse the menu and other engaging experiences and explore the restaurant offerings.
-              </p>
-            </div>
-            <div className='md:shrink-0 p-5'>
-              <img className='object-contain w-[110px] h-[110px]' src={ProjectImg3} alt="Inventory" />
-            </div>
-            <div className='flex justify-end mt-93'>
-              <Link to='https://github.com/Mihnevw/restaurant' target="_blank" rel="noopener noreferrer">
-                <BsGithub size={40} className="border-4 hover:border-indigo-800 rounded-full" />
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden hover:animate-pulse transition-transform'>
-          <div className='md:flex'>
-            <div className='md:shrink-0 p-5'>
-              <img className='object-contain w-[110px] h-[110px]' src={ProjectImg4} alt="POS" />
-            </div>
-            <div className='p-8'>
-              <div className='uppercase tracking-wide text-sm text-black font-semibold'>
-                Game Application
-              </div>
-              <p className='text-blue-400 hover:underline'>GA</p>
-              <p className='text-gray-700 text-base leading-normal'>
-                Game Library is a web application that allows users to add, delete, and browse games in a personalized collection. It also features a comment system, enabling users to share their thoughts and reviews on different games.
-              </p>
-            </div>
-            <div className='flex justify-end mt-93'>
-              <Link to='https://github.com/Mihnevw/games-react-site' target="_blank" rel="noopener noreferrer">
-                <BsGithub size={40} className="border-4 hover:border-indigo-800 rounded-full" />
-              </Link>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
