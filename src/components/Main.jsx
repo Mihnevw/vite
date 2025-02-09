@@ -8,15 +8,18 @@ import Footer from "./Footer";
 
 function Main() {
   return (
-    <div className="bg-indigo-500 p-6">
-      <Nav />
-      <Hero />
-      <Project />
-      <Testimonial />
-      <Footer />
+    <>
+      <div className="bg-indigo-500 p-6">
 
-      <Link to="/skill" className="text-3xl font-bold underline text-center text-blue-900"></Link>
-    </div>
+        <Nav />
+        <Hero />
+        <Project />
+        <Testimonial />
+        <Footer />
+
+        <Link to="/skill" className="text-3xl font-bold underline text-center text-blue-900"></Link>
+      </div>
+    </>
   );
 }
 

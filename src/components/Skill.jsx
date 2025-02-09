@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import {NotificationStack} from './Notification.jsx';
+import { NotificationStack } from './Notification.jsx';
 import Navigation from './Nav.jsx';
 
 const skills = [

@@ -51,6 +51,14 @@ const notifications = [
     time: "5m",
     mediaType: "video",
   },
+  {
+    id: 7,
+    logo: "https://cdn.simpleicons.org/viber",
+    title: "Viber",
+    message: "Now featuring AI-powered real-time translation for effortless global messaging.",
+    time: "6m",
+    mediaType: "both",
+  },
 ];
 
 const NOTIFICATION_DISPLAY_TIME = 7000;
