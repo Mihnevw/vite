@@ -55,7 +55,7 @@ const skills = [
   },
   {
     name: 'TailwindCSS',
-    image: '/src/assets/tailwind.png',
+    image: '/tailwind.png',
     color: 'text-sky-400',
     proficiency: 55,
     level: 'INTERMEDIATE LEVEL',
