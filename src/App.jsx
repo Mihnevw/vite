@@ -5,6 +5,7 @@ import Skill from './components/Skill';
 import AllGitHubProjects from './components/AllGitHubProjects';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
+import MemberDetail from './components/MemberDetails';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/project" element={<AllGitHubProjects />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/member/:memberName" element={<MemberDetail />} />
       </Routes>
     </>
   );
