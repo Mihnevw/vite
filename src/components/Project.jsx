@@ -14,7 +14,6 @@ function Project() {
       </div>
 
       <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-6 p-3 md:p-5'>
-        {/* Project Card */}
         {[{
           title: 'Music application',
           description: 'Music app is a web application that allows users to search for albums, add new ones to their library, and remove existing ones.',

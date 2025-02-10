@@ -20,8 +20,8 @@ function Testimonial() {
       </div>
 
       {teamMembers.map((member, index) => (
-        <div key={index} className="w-full sm:w-1/2 lg:w-1/4 p-4">
-          {/* Обграждаме целия елемент с Link, който води към динамичния маршрут */}
+        // Обвиваме всеки card в контейнер с клас "group" за да използваме group-hover
+        <div key={index} className="w-full sm:w-1/2 lg:w-1/4 p-4 group hover:animate-pulse">
           <Link to={`/member/${member.name}`}>
             <div className="bg-white shadow-lg ring-1 ring-black/5 rounded-xl flex flex-col items-center p-6 dark:bg-slate-800 dark:highlight-white/5">
               <img
@@ -35,6 +35,10 @@ function Testimonial() {
               </div>
             </div>
           </Link>
+
+          <div className="mt-2 text-center text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Click to see information on {member.name}
+          </div>
         </div>
       ))}
     </div>
