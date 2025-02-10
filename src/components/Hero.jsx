@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BsFacebook, BsTwitter, BsInstagram, BsGithub } from "react-icons/bs";
 
-import Profileimg from "../assets/portfolio.jpg";
+import Profileimg from "../assets/profile.jpg";
 
 function Hero() {
   const [showMore, setShowMore] = useState(false);
