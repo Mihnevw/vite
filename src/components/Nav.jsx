@@ -37,6 +37,9 @@ function Nav() {
           <Link to="/contact" className="text-white hover:bg-indigo-800 rounded-full px-5 py-2 text-xl font-bold">
             Contact
           </Link>
+          <Link to="/checkout" className="text-white hover:bg-indigo-800 rounded-full px-5 py-2 text-xl font-bold">
+            Price
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}

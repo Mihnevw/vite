@@ -8,46 +8,46 @@ function MemberDetail() {
   // Извличаме параметъра memberName от URL-а
   const { memberName } = useParams();
 
-  // Фиктивни данни за демонстрация – заменете с реални данни или логика за зареждане
+  // Data за всеки член на екипа
   const memberData = {
     Mike: {
       image: '/src/assets/avatar1.jpg',
-      bio: "Mike е нашият опитен мениджър с над 10 години опит в индустрията. Той координира екипа и осигурява успешното изпълнение на проектите.",
+      bio: "Mike is our experienced manager with over 10 years of industry experience. He coordinates the team and ensures the successful implementation of projects.",
       role: "Manager",
       projects: ["Project Alpha", "Project Beta", "Project Gamma"],
       contact: {
-        email: "mike@example.com",
-        phone: "+1234567890"
+        email: "mike@gmail.com",
+        phone: "+359 888123456"
       }
     },
     Peter: {
       image: '/src/assets/avatar2.jpg',
-      bio: "Peter е талантлив Back-End разработчик, който се грижи за сървърната логика и API интеграциите.",
+      bio: "Peter is a talented Back-End developer who takes care of server logic and API integrations.",
       role: "Back-End Dev",
       projects: ["Server Redesign", "API Integration", "Database Migration"],
       contact: {
-        email: "peter@example.com",
-        phone: "+0987654321"
+        email: "peter@gmail.com",
+        phone: "+359 888123456"
       }
     },
     Silvester: {
       image: '/src/assets/avatar3.jpg',
-      bio: "Silvester е креативен Front-End разработчик, който създава модерни и интуитивни потребителски интерфейси.",
+      bio: "Silvester is a creative Front-End developer who creates modern and intuitive user interfaces.",
       role: "Front-End Dev",
       projects: ["UI Redesign", "React Revamp", "CSS Overhaul"],
       contact: {
-        email: "silvester@example.com",
-        phone: "+111222333"
+        email: "silvester@gmail.com",
+        phone: "+359 888123456"
       }
     },
     John: {
       image: '/src/assets/avatar4.jpg',
-      bio: "John е универсален Full Stack разработчик, който умело свързва front-end и back-end технологиите.",
+      bio: "John is a versatile Full Stack developer who skillfully connects front-end and back-end technologies.",
       role: "Full Stack Dev",
       projects: ["Full Stack Integration", "New Website Launch", "Performance Optimization"],
       contact: {
-        email: "john@example.com",
-        phone: "+444555666"
+        email: "john@gmail.com",
+        phone: "+359 888123456"
       }
     }
   };
@@ -71,7 +71,7 @@ function MemberDetail() {
         <div className="max-w-6xl mx-auto px-4">
           {/* Заглавие */}
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-100 uppercase tracking-wide">
-            Информация за {memberName}
+            Information for {memberName}
           </h2>
 
           {/* Карта с детайлите */}
@@ -87,14 +87,14 @@ function MemberDetail() {
               </div>
               <div className="mt-6 md:mt-0 md:ml-8 text-center md:text-left">
                 <h1 className="text-4xl font-bold text-gray-800">{memberName}</h1>
-                <p className="text-xl text-gray-500 mb-4">Роля: {data.role}</p>
+                <p className="text-xl text-gray-500 mb-4">Role: {data.role}</p>
                 <p className="text-gray-700">{data.bio}</p>
               </div>
             </div>
 
             {/* Секция за Проекти */}
             <div className="mt-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Проекти</h2>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Project</h2>
               {data.projects.length > 0 ? (
                 <ul className="list-disc list-inside text-gray-700">
                   {data.projects.map((project, index) => (
@@ -102,18 +102,18 @@ function MemberDetail() {
                   ))}
                 </ul>
               ) : (
-                <p className="text-gray-500">Няма налични проекти.</p>
+                <p className="text-gray-500">No projects available.</p>
               )}
             </div>
 
             {/* Секция за Контакт информация */}
             <div className="mt-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Контакт информация</h2>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Contact Information</h2>
               <p className="text-gray-700">
                 <span className="font-semibold">Email:</span> {data.contact.email}
               </p>
               <p className="text-gray-700">
-                <span className="font-semibold">Телефон:</span> {data.contact.phone}
+                <span className="font-semibold">Phone:</span> {data.contact.phone}
               </p>
             </div>
           </div>
