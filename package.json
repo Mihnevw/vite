@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "node ./server/server.js"
+    "server": "node ./config/database.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -19,6 +19,7 @@
     "axios": "^1.7.9",
     "body-parser": "^1.20.3",
     "chart.js": "^4.4.7",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "express-handlebars": "^8.0.1",

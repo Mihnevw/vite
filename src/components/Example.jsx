@@ -1,31 +1,32 @@
 import { CheckIcon } from '@heroicons/react/20/solid';
-
 import Navigation from './Nav';
 import Footer from './Footer';
 
+// Продуктите с данни за цените
 const tiers = [
   {
-    name: 'Notifications',
-    id: 'tier-hobby',
-    priceMonthly: '€13',
+    name: 'Signalix',
+    id: 'tier-signalix',
+    priceMonthly: '€13',         // Намалена цена
+    originalPrice: '€25',        // Оригинална цена
+    discountPercentage: 48,
     stripePriceId: 'price_1QsinuFIBGHUW2XTB5BVoPOZ',
     description: "The perfect plan if you're just getting started with our product.",
-    features: ['1 product', 'Up to 10,000 subscribers', 'Advanced analytics', '24-hour support response time'],
+    features: ['Unlimited Signalix', '1 website', 'Simple analytics'],
     featured: false,
   },
   {
-    name: 'Enterprise',
+    name: 'Signalix Pro',
     id: 'tier-enterprise',
-    priceMonthly: '€99',
+    priceMonthly: '€55',         // Намалена цена (по-малка)
+    originalPrice: '€99',        // Оригинална цена (по-голяма)
+    discountPercentage: 44,
     stripePriceId: 'price_1QsinuFIBGHUW2XTB5BVoPOZ',
     description: 'Dedicated support and infrastructure for your company.',
     features: [
-      'Unlimited products',
-      'Unlimited subscribers',
-      'Advanced analytics',
-      'Dedicated support representative',
-      'Marketing automations',
-      'Custom integrations',
+      'Unlimited Signalix',
+      'Unlimited website',
+      'Simple analytics',
     ],
     featured: true,
   },
@@ -36,15 +37,15 @@ function classNames(...classes) {
 }
 
 export default function Example() {
-  const handleCheckout = async () => {
+  const handleCheckout = async (priceId) => {
     fetch("http://localhost:5000/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ priceId: "price_1QsinuFIBGHUW2XTB5BVoPOZ" }) // ❗ Провери дали този priceId е реален
+      body: JSON.stringify({ priceId }) // Използваме подадения priceId
     })
       .then(res => res.json())
       .then(data => {
-        console.log("Server response:", data); // ✅ Проверка на отговора
+        console.log("Server response:", data);
         if (data.url) {
           window.location.href = data.url;
         } else {
@@ -60,7 +61,10 @@ export default function Example() {
         <Navigation />
       </div>
       <div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
-        <div aria-hidden="true" className="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl"
+        >
           <div
             style={{
               clipPath:
@@ -79,7 +83,19 @@ export default function Example() {
           {tiers.map((tier) => (
             <div key={tier.id} className={classNames(tier.featured ? 'bg-gray-900 text-white' : 'bg-white', 'p-8 rounded-3xl shadow-lg')}>
               <h3 className="text-lg font-semibold text-indigo-600">{tier.name}</h3>
-              <p className="mt-4 text-4xl font-bold">{tier.priceMonthly}</p>
+              {tier.discountPercentage && (
+                <p className="text-sm text-gray-500">
+                  ({tier.discountPercentage}% OFF)
+                </p>
+              )}
+              <p className="mt-4 text-4xl font-bold">
+                {tier.priceMonthly}
+                {tier.originalPrice && (
+                  <span className="ml-2 text-base text-gray-500 line-through">
+                    {tier.originalPrice}
+                  </span>
+                )}
+              </p>
               <p className="mt-4">{tier.description}</p>
               <ul className="mt-6 space-y-3">
                 {tier.features.map((feature) => (
@@ -95,8 +111,14 @@ export default function Example() {
               >
                 Get started
               </button>
+              <p className='flex items-center justify-center gap-2 text-sm text-center text-base-content/80 font-medium relative'>
+                Pay once. Access forever.
+              </p>
             </div>
           ))}
+        </div>
+        <div className='text-center text-xs text-base-content-secondary mt-8'>
+          *With great power comes great responsibility. Use Signalix responsibly.
         </div>
       </div>
       <Footer />
