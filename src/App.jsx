@@ -12,7 +12,10 @@ import Example from './components/Example';
 import Success from './components/Success';
 import Cancel from './components/Cancel';
 
-const stripePromise = loadStripe('pk_test_51OK5YbFIBGHUW2XTGWPGsK0rJecA6TFHyhJXGCApccEMnbemZBxWyRE2b9kIGgy5MYmIje11IKNaroEySaFy6yK000JOpbBxqr'); // Използвай .env файл за ключовете
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY); // Използвай .env файл за ключовете
+
+// По-нататък използвайте `VITE_BACKEND_URL` за API заявки, напр.:
+//const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
   return (
