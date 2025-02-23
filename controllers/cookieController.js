@@ -3,7 +3,7 @@ export const setCookie = (req, res) => {
       sameSite: 'none',
       secure: true,
       httpOnly: true,
+      partitioned: true,
     });
     res.send('Cookie is set');
   };
-  

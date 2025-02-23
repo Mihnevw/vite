@@ -30,27 +30,41 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await fetch("http://localhost:5000/contact", {
+      const response = await fetch("http://localhost:5000/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          phone: formData.phone || "" // 👈 Гарантираме стойност
+        }),
       });
-
-      if (response.ok) {
+  
+      const responseText = await response.text();
+      
+      try {
+        const responseData = JSON.parse(responseText);
+        
+        if (!response.ok) {
+          console.error("Server Error:", responseData);
+          alert(`Грешка: ${responseData.error || response.statusText}`);
+          return;
+        }
+        
         setSubmitted(true);
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-          phone: ""
+        setFormData({ name: "", email: "", message: "", phone: "" });
+        
+      } catch (parseError) {
+        console.error("Invalid JSON Response:", {
+          responseText,
+          error: parseError
         });
-      } else {
-        console.error("Failed to send message");
+        alert("Неочакван отговор от сървъра");
       }
-    } catch (error) {
-      console.error("Error sending message:", error);
+      
+    } catch (networkError) {
+      console.error("Network Error:", networkError);
+      alert("Проблем с връзката към сървъра");
     }
   };
 

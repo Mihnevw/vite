@@ -20,7 +20,12 @@ export const createCheckoutSession = async (req, res) => {
     if (!req.body.priceId) {
       return res.status(400).json({ error: "Missing priceId" });
     }
-    
+
+    const price = await stripe.prices.retrieve(req.body.priceId).catch(() => null);
+    if (!price) {
+      return res.status(400).json({ error: "Select correct priceId" });
+    }
+
     const origin = req.headers.origin || "http://localhost:3000";
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],

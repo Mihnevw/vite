@@ -1,4 +1,5 @@
 import { CheckIcon } from '@heroicons/react/20/solid';
+
 import Navigation from './Nav';
 import Footer from './Footer';
 
@@ -11,7 +12,7 @@ const tiers = [
     originalPrice: '€25',        // Оригинална цена
     discountPercentage: 48,
     stripePriceId: 'price_1QsinuFIBGHUW2XTB5BVoPOZ',
-    description: "The perfect plan if you're just getting started with our product.",
+    description: "If you want such amazing 'Signals', this plan is for you!",
     features: ['Unlimited Signalix', '1 website', 'Simple analytics'],
     featured: false,
   },
@@ -38,21 +39,23 @@ function classNames(...classes) {
 
 export default function Example() {
   const handleCheckout = async (priceId) => {
-    fetch("http://localhost:5000/create-checkout-session", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ priceId }) // Използваме подадения priceId
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log("Server response:", data);
-        if (data.url) {
-          window.location.href = data.url;
-        } else {
-          throw new Error("No session URL received");
-        }
-      })
-      .catch(error => console.error("Checkout error:", error));
+    try {
+      const response = await fetch("http://localhost:5000/api/checkout/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ priceId })
+      });
+
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(`HTTP error! status: ${response.status}, body: ${text}`);
+      }
+
+      const data = await response.json();
+      window.location.href = data.url;
+    } catch (error) {
+      console.error("Checkout error:", error);
+    }
   };
 
   return (
@@ -107,7 +110,7 @@ export default function Example() {
               </ul>
               <button
                 onClick={() => handleCheckout(tier.stripePriceId)}
-                className="mt-6 w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-500"
+                className="mt-6 w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-500 cursor-pointer"
               >
                 Get started
               </button>

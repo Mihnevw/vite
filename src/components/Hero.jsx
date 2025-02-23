@@ -39,7 +39,7 @@ function Hero() {
         <div className="w-1/3 ssm:w-fit">
           <p className="text-4xl mb-4 font-bold">About me</p>
           <p className="text-slate-300 font-bold">
-            Aspiring programmer with experience in JavaScript and related libraries. Skilled in building front-end and back-end web applications, using frameworks like React and tools like Bootstrap.
+            Aspiring programmer with experience in JavaScript and related libraries. Skilled in building front-end and back-end web applications, using frameworks like React and tools like Bootstrap...
           </p>
 
           {

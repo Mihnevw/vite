@@ -1,20 +1,11 @@
 import Stripe from 'stripe';
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
+import process from 'process';
 
-dotenv.config();
+config();
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+console.log('Stripe secret key:', process.env.STRIPE_SECRET_KEY);
+
 export default stripe;
-
-
-
-
-
-
-//Миналия код
-//import Stripe from 'stripe';
-
-//const stripe = new Stripe('sk_test_51OK5YbFIBGHUW2XT5KfyuKRjKaTyxTiPqbNdrxEVNCKNYNxsGXl96EgEITTP4nR19NS8rXzeBBW2BEc8XGcQO1St00uRY205tJ');
-
-//export default stripe;

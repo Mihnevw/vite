@@ -4,7 +4,7 @@ import { saveMessage, getMessages } from '../controllers/ContactController.js';
 
 const router = express.Router();
 
-router.post('/contact', saveMessage);
-router.get('/messages', getMessages);
+router.post('/', saveMessage);
+router.get('/', getMessages);
 
 export default router;
