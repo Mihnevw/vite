@@ -1,12 +1,12 @@
-'use client'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion';
+import { ChevronDownIcon } from '@heroicons/react/16/solid';
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
+import { Field, Label, Switch } from '@headlessui/react';
 
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
-import { Field, Label, Switch } from '@headlessui/react'
-
-import Navigation from "./Nav";
+import Navigation from './Nav.jsx';
 
 export default function ContactHeader() {
   const [agreed, setAgreed] = useState(false);
@@ -17,8 +17,18 @@ export default function ContactHeader() {
     email: '',
     phone: '',
     message: '',
+    country: 'US',
   });
   const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/');
+    }, 60000);
+
+    return () => clearTimeout(timer); // Изчистване на таймера при unmount
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -55,6 +65,7 @@ export default function ContactHeader() {
           email: '',
           phone: '',
           message: '',
+          country: 'US',
         });
       } catch (parseError) {
         console.error('Invalid JSON Response:', {
@@ -68,38 +79,50 @@ export default function ContactHeader() {
       alert('Problem with the connection to the server');
     }
   };
+
   return (
     <>
-      <div className="bg-gray-800 p-6">
+      <div className="bg-gray-800 p-6 pointer-events: auto">
         <Navigation />
       </div>
-      <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+      <div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
+          className="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl"
         >
           <div
             style={{
               clipPath:
                 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
             }}
-            className="relative left-1/2 -z-10 aspect-1155/678 w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+            className="mx-auto aspect-1155/678 w-[72.1875rem] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
           />
         </div>
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">Contact sales</h2>
-          <p className="mt-2 text-lg/8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>
+          <motion.h2
+            className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl uppercase"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Contact Us
+          </motion.h2>
         </div>
         {submitted ? (
-          <div className="text-center">
-            <p className="text-green-500">Thank you! Your message has been sent.</p>
-            <Link to="/" className="text-blue-500 hover:underline mt-4 inline-block">Go back to Home</Link>
+          <div className="flex flex-col items-center justify-center space-y-2 text-center">
+            <div className="flex items-center space-x-2">
+              <CheckCircleIcon className="h-6 w-6 text-green-600" />
+              <p className="font-semibold text-2xl">Thank you! Your message has been sent.</p>
+            </div>
+            <div className="text-lg text-gray-700 font-medium">
+              You will be redirected to the home page shortly...
+            </div>
           </div>
         ) : (
           <form onSubmit={handleSubmit} method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div>
-                <label htmlFor="first-name" className="block text-sm/6 font-semibold text-gray-900">
+                <label htmlFor="firstName" className="block text-sm/6 font-semibold text-gray-900">
                   First name
                 </label>
                 <div className="mt-2.5">
@@ -115,7 +138,7 @@ export default function ContactHeader() {
                 </div>
               </div>
               <div>
-                <label htmlFor="last-name" className="block text-sm/6 font-semibold text-gray-900">
+                <label htmlFor="lastName" className="block text-sm/6 font-semibold text-gray-900">
                   Last name
                 </label>
                 <div className="mt-2.5">
@@ -207,11 +230,10 @@ export default function ContactHeader() {
                   <textarea
                     id="message"
                     name="message"
-                    onChange={handleChange}
                     value={formData.message}
+                    onChange={handleChange}
                     rows={4}
                     className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-                    defaultValue={''}
                   />
                 </div>
               </div>

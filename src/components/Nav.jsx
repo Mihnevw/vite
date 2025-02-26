@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CgNametag } from "react-icons/cg";
 import { AiOutlineClose } from "react-icons/ai";
@@ -7,11 +7,12 @@ import { HiMenuAlt1 } from "react-icons/hi";
 function Nav() {
   const [toggle, setToggle] = useState(false);
 
-  if (toggle) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "auto";
-  }
+  useEffect(() => {
+    document.body.style.overflow = toggle ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto"; // Restore on unmount
+    };
+  }, [toggle]);
 
   return (
     <>
@@ -45,9 +46,19 @@ function Nav() {
         {/* Mobile Menu Button */}
         <div className="lg:hidden">
           {toggle ? (
-            <AiOutlineClose onClick={() => setToggle(false)} size={30} className="text-white cursor-pointer" />
+            <AiOutlineClose
+              onClick={() => setToggle(false)}
+              size={30}
+              className="text-white cursor-pointer"
+              aria-label="Close menu"
+            />
           ) : (
-            <HiMenuAlt1 onClick={() => setToggle(true)} size={30} className="text-white cursor-pointer" />
+            <HiMenuAlt1
+              onClick={() => setToggle(true)}
+              size={30}
+              className="text-white cursor-pointer"
+              aria-label="Open menu"
+            />
           )}
         </div>
       </div>
@@ -61,10 +72,11 @@ function Nav() {
           <AiOutlineClose onClick={() => setToggle(false)} size={30} className="text-white cursor-pointer" />
         </div>
         <ul className="flex flex-col items-center justify-center space-y-6 mt-10 text-white text-2xl font-bold">
-          <Link to="/skill" onClick={() => setToggle(false)}>Skills</Link>
-          <Link to="/project" onClick={() => setToggle(false)}>Projects</Link>
-          <Link to="/resume" onClick={() => setToggle(false)}>CV</Link>
-          <Link to="/contact" onClick={() => setToggle(false)}>Contact</Link>
+          <li><Link to="/skill" onClick={() => setToggle(false)}>Skills</Link></li>
+          <li><Link to="/project" onClick={() => setToggle(false)}>Projects</Link></li>
+          <li><Link to="/resume" onClick={() => setToggle(false)}>CV</Link></li>
+          <li><Link to="/contact" onClick={() => setToggle(false)}>Contact</Link></li>
+          <li><Link to="/checkout" onClick={() => setToggle(false)}>Price</Link></li>
         </ul>
       </div>
     </>
