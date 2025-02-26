@@ -36,7 +36,7 @@ const Contact = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          phone: formData.phone || "" // 👈 Гарантираме стойност
+          phone: formData.phone || ""
         }),
       });
   
@@ -64,7 +64,7 @@ const Contact = () => {
       
     } catch (networkError) {
       console.error("Network Error:", networkError);
-      alert("Проблем с връзката към сървъра");
+      alert("Problem with the connection to the server");
     }
   };
 

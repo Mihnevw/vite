@@ -13,7 +13,7 @@ function Project() {
         <h1 className='uppercase tracking-wide text-2xl font-bold text-white mt-5 md:mt-10'>My Projects</h1>
       </div>
 
-      <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-6 p-3 md:p-5'>
+      <div className='grid sm:grid-cols-1 md:grid-cols-2 gap-6 p-3 md:p-5 cursor-pointer'>
         {[{
           title: 'Music application',
           description: 'Music app is a web application that allows users to search for albums, add new ones to their library, and remove existing ones.',

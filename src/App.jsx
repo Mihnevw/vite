@@ -6,7 +6,7 @@ import Main from './components/Main';
 import Skill from './components/Skill';
 import AllGitHubProjects from './components/AllGitHubProjects';
 import Resume from './components/Resume';
-import Contact from './components/Contact';
+import ContactHeader from './components/ContactHeader';
 import MemberDetail from './components/MemberDetails';
 import Example from './components/Example';
 import Success from './components/Success';
@@ -25,7 +25,7 @@ function App() {
         <Route path="/skill" element={<Skill />} />
         <Route path="/project" element={<AllGitHubProjects />} />
         <Route path="/resume" element={<Resume />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<ContactHeader />} />
         <Route path="/member/:memberName" element={<MemberDetail />} />
         <Route path="/checkout" element={<Example />} />
         <Route path="/success" element={<Success />} />

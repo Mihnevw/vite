@@ -1,20 +1,21 @@
-//Имплементира логиката за обработка на заявките – отделно за контактите, плащанията и cookie.
 import Message from '../model/Message.js';
 import process from 'process';
 
 export const saveMessage = async (req, res) => {
   try {
-    const { name, email, phone, message } = req.body;
+    const { firstName, lastName, company, email, phone, message } = req.body;
 
-    // Нова валидация без phone
-    if (!name?.trim() || !email?.trim() || !message?.trim()) {
+    // Проверка дали всички необходими полета са попълнени
+    if (!firstName?.trim() || !lastName?.trim() || !company?.trim() || !email?.trim() || !message?.trim()) {
       return res.status(400).json({ 
-        error: "Name, email and message are required" 
+        error: "First name, last name, company, email, and message are required" 
       });
     }
 
     const newMessage = new Message({
-      name: name.trim(),
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      company: company.trim(),
       email: email.trim(),
       phone: phone?.trim() || "", 
       message: message.trim()
