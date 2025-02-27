@@ -1,4 +1,5 @@
 import { CheckIcon } from '@heroicons/react/20/solid';
+import { motion } from 'framer-motion';
 
 import Navigation from './Nav';
 import Footer from './Footer';
@@ -77,8 +78,15 @@ export default function Example() {
           />
         </div>
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base font-semibold text-indigo-600 uppercase">Pricing</h2>
-          <p className="mt-2 text-5xl font-semibold text-gray-900 sm:text-6xl">
+          <motion.h2
+            className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl uppercase"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Pricing
+          </motion.h2>
+          <p className="mt-2 text-5xl font-semibold text-gray-900 sm:text-2xl">
             Choose the right plan for you
           </p>
         </div>

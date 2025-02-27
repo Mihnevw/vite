@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import { NotificationStack } from './Notification.jsx';
 import Navigation from './Nav.jsx';
@@ -97,9 +98,14 @@ const MySkills = () => {
       </div>
       <div className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-100 uppercase tracking-wide">
+        <motion.h2
+            className="text-4xl font-bold text-center mb-12 text-gray-100 uppercase tracking-wide"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             My skills
-          </h2>
+          </motion.h2>
           {loader ? (
             <div className="flex justify-center items-center h-32">
               <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid"></div>

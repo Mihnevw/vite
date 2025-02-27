@@ -7,9 +7,14 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { Field, Label, Switch } from '@headlessui/react';
 
 import Navigation from './Nav.jsx';
+import Footer from './Footer.jsx';
 
 export default function ContactHeader() {
   const [agreed, setAgreed] = useState(false);
+  const [error, setError] = useState("");
+  const [inputError, setInputError] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -17,10 +22,8 @@ export default function ContactHeader() {
     email: '',
     phone: '',
     message: '',
-    country: 'US',
+    country: 'EU',
   });
-  const [submitted, setSubmitted] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,6 +42,34 @@ export default function ContactHeader() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    let newErrors = {};
+
+  if (!formData.firstName) newErrors.firstName = "First name is required!";
+  if (!formData.lastName) newErrors.lastName = "Last name is required!";
+  if (!formData.email) newErrors.email = "Email is required!";
+  if (!formData.phone) newErrors.phone = "Phone number is required!";
+  if (!formData.message) newErrors.message = "Message is required!";
+  if (!formData.company) newErrors.company = "Company is required!";
+  if (!agreed) newErrors.agreed = "You must agree to the policies!";
+
+  if (Object.keys(newErrors).length > 0) {
+    setInputError(newErrors);
+    return;
+  }
+
+  setInputError({});
+
+    if (!agreed) {
+      setError("Agree to policies!");
+      return;
+    }
+
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.message) {
+      setError("Please fill in all required fields!");
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:5000/api/contact', {
         method: 'POST',
@@ -67,6 +98,7 @@ export default function ContactHeader() {
           message: '',
           country: 'US',
         });
+        setError("");
       } catch (parseError) {
         console.error('Invalid JSON Response:', {
           responseText,
@@ -130,11 +162,13 @@ export default function ContactHeader() {
                     id="firstName"
                     name="firstName"
                     type="text"
+                    placeholder='First Name'
                     value={formData.firstName}
                     onChange={handleChange}
                     autoComplete="given-name"
                     className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                   />
+                  {inputError.firstName && <p className="text-red-500 text-sm mt-1">{inputError.firstName}</p>}
                 </div>
               </div>
               <div>
@@ -146,11 +180,13 @@ export default function ContactHeader() {
                     id="lastName"
                     name="lastName"
                     type="text"
+                    placeholder='Last Name'
                     value={formData.lastName}
                     onChange={handleChange}
                     autoComplete="family-name"
                     className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                   />
+                  {inputError.lastName && <p className="text-red-500 text-sm mt-1">{inputError.lastName}</p>}
                 </div>
               </div>
               <div className="sm:col-span-2">
@@ -162,11 +198,13 @@ export default function ContactHeader() {
                     id="company"
                     name="company"
                     type="text"
+                    placeholder='Company'
                     onChange={handleChange}
                     value={formData.company}
                     autoComplete="organization"
                     className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                   />
+                  {inputError.company && <p className="text-red-500 text-sm mt-1">{inputError.company}</p>}
                 </div>
               </div>
               <div className="sm:col-span-2">
@@ -178,11 +216,13 @@ export default function ContactHeader() {
                     id="email"
                     name="email"
                     type="email"
+                    placeholder='Email'
                     onChange={handleChange}
                     value={formData.email}
                     autoComplete="email"
                     className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                   />
+                  {inputError.email && <p className="text-red-500 text-sm mt-1">{inputError.email}</p>}
                 </div>
               </div>
               <div className="sm:col-span-2">
@@ -195,6 +235,7 @@ export default function ContactHeader() {
                       <select
                         id="country"
                         name="country"
+                        placeholder='Phone'
                         onChange={handleChange}
                         value={formData.country}
                         autoComplete="country"
@@ -214,12 +255,13 @@ export default function ContactHeader() {
                       id="phone"
                       name="phone"
                       type="text"
+                      placeholder="Phone number"
                       onChange={handleChange}
                       value={formData.phone}
-                      placeholder="+359 123 456 789"
                       className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
                     />
                   </div>
+                    {inputError.phone && <p className="text-red-500 text-sm mt-1">{inputError.phone}</p>}
                 </div>
               </div>
               <div className="sm:col-span-2">
@@ -231,10 +273,12 @@ export default function ContactHeader() {
                     id="message"
                     name="message"
                     value={formData.message}
+                    placeholder='Message'
                     onChange={handleChange}
                     rows={4}
                     className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                   />
+                  {inputError.message && <p className="text-red-500 text-sm mt-1">{inputError.message}</p>}
                 </div>
               </div>
               <Field className="flex gap-x-4 sm:col-span-2">
@@ -251,6 +295,8 @@ export default function ContactHeader() {
                     />
                   </Switch>
                 </div>
+
+
                 <Label className="text-sm/6 text-gray-600">
                   By selecting this, you agree to our{' '}
                   <a href="#" className="font-semibold text-indigo-600">
@@ -259,18 +305,22 @@ export default function ContactHeader() {
                   .
                 </Label>
               </Field>
+
+              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+
             </div>
             <div className="mt-10">
               <button
                 type="submit"
                 className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Lets talk
+                Let&apos;s Talk
               </button>
             </div>
           </form>
         )}
       </div>
+      <Footer />
     </>
   )
 }
