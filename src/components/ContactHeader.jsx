@@ -45,28 +45,16 @@ export default function ContactHeader() {
 
     let newErrors = {};
 
-  if (!formData.firstName) newErrors.firstName = "First name is required!";
-  if (!formData.lastName) newErrors.lastName = "Last name is required!";
-  if (!formData.email) newErrors.email = "Email is required!";
-  if (!formData.phone) newErrors.phone = "Phone number is required!";
-  if (!formData.message) newErrors.message = "Message is required!";
-  if (!formData.company) newErrors.company = "Company is required!";
-  if (!agreed) newErrors.agreed = "You must agree to the policies!";
+    if (!formData.firstName) newErrors.firstName = "First name is required!";
+    if (!formData.lastName) newErrors.lastName = "Last name is required!";
+    if (!formData.email) newErrors.email = "Email is required!";
+    if (!formData.phone) newErrors.phone = "Phone number is required!";
+    if (!formData.message) newErrors.message = "Message is required!";
+    if (!formData.company) newErrors.company = "Company is required!";
+    if (!agreed) newErrors.agreed = "You must agree to the policies!";
 
-  if (Object.keys(newErrors).length > 0) {
-    setInputError(newErrors);
-    return;
-  }
-
-  setInputError({});
-
-    if (!agreed) {
-      setError("Agree to policies!");
-      return;
-    }
-
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.message) {
-      setError("Please fill in all required fields!");
+    if (Object.keys(newErrors).length > 0) {
+      setInputError(newErrors);
       return;
     }
 
@@ -78,34 +66,25 @@ export default function ContactHeader() {
       });
 
       const responseText = await response.text();
+      const responseData = JSON.parse(responseText);
 
-      try {
-        const responseData = JSON.parse(responseText);
-
-        if (!response.ok) {
-          console.error('Server Error:', responseData);
-          alert(`Грешка: ${responseData.error || response.statusText}`);
-          return;
-        }
-
-        setSubmitted(true);
-        setFormData({
-          firstName: '',
-          lastName: '',
-          company: '',
-          email: '',
-          phone: '',
-          message: '',
-          country: 'US',
-        });
-        setError("");
-      } catch (parseError) {
-        console.error('Invalid JSON Response:', {
-          responseText,
-          error: parseError,
-        });
-        alert('Неочакван отговор от сървъра');
+      if (!response.ok) {
+        console.error('Server Error:', responseData);
+        alert(`Грешка: ${responseData.error || response.statusText}`);
+        return;
       }
+
+      setSubmitted(true);
+      setFormData({
+        firstName: '',
+        lastName: '',
+        company: '',
+        email: '',
+        phone: '',
+        message: '',
+        country: 'US',
+      });
+      setError("");
     } catch (networkError) {
       console.error('Network Error:', networkError);
       alert('Problem with the connection to the server');
@@ -261,7 +240,7 @@ export default function ContactHeader() {
                       className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
                     />
                   </div>
-                    {inputError.phone && <p className="text-red-500 text-sm mt-1">{inputError.phone}</p>}
+                  {inputError.phone && <p className="text-red-500 text-sm mt-1">{inputError.phone}</p>}
                 </div>
               </div>
               <div className="sm:col-span-2">
@@ -309,6 +288,9 @@ export default function ContactHeader() {
               {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
             </div>
+
+            {inputError.agreed && <p className="text-red-500 text-sm mt-1">{inputError.agreed}</p>}
+
             <div className="mt-10">
               <button
                 type="submit"
