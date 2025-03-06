@@ -19,7 +19,7 @@ const Resume = () => {
           </p>
           <div className="flex justify-center">
             <Link
-              to="/CV.pdf"
+              to="/CV-canva.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 transform hover:scale-105"

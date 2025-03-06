@@ -12,7 +12,7 @@ import Pricing from './components/Pricing';
 import Success from './components/Success';
 import Cancel from './components/Cancel';
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY); // Използвай .env файл за ключовете
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY); // .env файл за ключовете
 
 // По-нататък използвайте `VITE_BACKEND_URL` за API заявки, напр.:
 //const backendUrl = import.meta.env.VITE_BACKEND_URL;
